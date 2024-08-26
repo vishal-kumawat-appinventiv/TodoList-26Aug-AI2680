@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Child from "./components/Child";
 
 const Parent = () => {
@@ -19,6 +19,14 @@ const Parent = () => {
       prev.map((todo, idx) => (idx === idxToUpdate ? val : todo))
     );
   };
+
+  useEffect(() => {
+    setTodo(JSON.parse(localStorage.getItem("todos")) || []);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todo));
+  }, [todo]);
 
   return (
     <>
