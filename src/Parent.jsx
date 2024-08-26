@@ -29,8 +29,8 @@ const Parent = () => {
   };
 
   useEffect(() => {
-    console.log("Mount + Update")
-  })
+    console.log("Mount + Update");
+  });
 
   useEffect(() => {
     setTodo(JSON.parse(localStorage.getItem("todos")) || []);
@@ -51,10 +51,11 @@ const Parent = () => {
             type="text"
             name="todo"
             value={input}
+            placeholder="add item..."
             onChange={(e) => setInput(e.target.value)}
           />
           <button className="addButton" onClick={handleClick}>
-            Add
+            ADD
           </button>
         </div>
         <Child allTodo={todo} onDelete={handleDelete} onEdit={handleEdit} />
