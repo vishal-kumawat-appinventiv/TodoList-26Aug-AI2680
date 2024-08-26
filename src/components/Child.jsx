@@ -16,25 +16,37 @@ const Child = ({ allTodo, onDelete, onEdit }) => {
 
   return (
     <>
-      {allTodo.map((todo, idx) => (
-        <div key={idx}>
-          {editToggle === idx ? (
-            <input
-              type="text"
-              value={editedValue}
-              onChange={(e) => setEditedValue(e.target.value)}
-            />
-          ) : (
-            <span>{todo}</span>
-          )}
-          <button onClick={() => onDelete(idx)}>Delete</button>
-          {editToggle === idx ? (
-            <button onClick={() => handleSave(idx)}>Save</button>
-          ) : (
-            <button onClick={() => handleToggle(idx, todo)}>Edit</button>
-          )}
-        </div>
-      ))}
+      <div className="todoContainer">
+        {allTodo.map((todo, idx) => (
+          <div key={idx} className="todoItem">
+            {editToggle === idx ? (
+              <input
+                className="editInput"
+                type="text"
+                value={editedValue}
+                onChange={(e) => setEditedValue(e.target.value)}
+              />
+            ) : (
+              <span className="todoText">{todo}</span>
+            )}
+            <button className="deleteButton" onClick={() => onDelete(idx)}>
+              Delete
+            </button>
+            {editToggle === idx ? (
+              <button className="saveButton" onClick={() => handleSave(idx)}>
+                Save
+              </button>
+            ) : (
+              <button
+                className="editButton"
+                onClick={() => handleToggle(idx, todo)}
+              >
+                Edit
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
     </>
   );
 };

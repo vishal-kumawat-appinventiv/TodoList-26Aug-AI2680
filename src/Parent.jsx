@@ -22,15 +22,22 @@ const Parent = () => {
 
   return (
     <>
-      <h1>TODO LIST</h1>
-      <input
-        type="text"
-        name="todo"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={handleClick}>Add</button>
-      <Child allTodo={todo} onDelete={handleDelete} onEdit={handleEdit} />
+      <div className="parentContainer">
+        <h1 className="title">TODO LIST</h1>
+        <div className="inputContainer">
+          <input
+            className="inputField"
+            type="text"
+            name="todo"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <button className="addButton" onClick={handleClick}>
+            Add
+          </button>
+        </div>
+        <Child allTodo={todo} onDelete={handleDelete} onEdit={handleEdit} />
+      </div>
     </>
   );
 };
